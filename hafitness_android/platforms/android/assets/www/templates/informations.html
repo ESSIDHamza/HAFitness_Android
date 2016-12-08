@@ -1,0 +1,76 @@
+<div ng-controller="consulterInfosCtrl">
+	<form name="consulterInfosForm" ng-submit="consulterInfos ()">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<input type="number" min="1" placeholder="# Coaché(e)"
+						class="form-control" ng-model="idCoache" ng-change="notifier ()"
+						name="idCoache" required /> <span class="erreur"
+						ng-show="consulterInfosForm.idCoache.$dirty && consulterInfosForm.idCoache.$error.required">Veuillez
+						saisir l'id !</span>
+				</div>
+			</div>
+			<div class="col-md-offset-4 col-md-4">
+				<input type="submit" value="Afficher" class="btn btn-success"
+					ng-disabled="consulterInfosForm.$invalid" />
+			</div>
+		</div>
+	</form>
+	<div ng-show="infos" ng-include="'/templates/infos_coache.html'"></div>
+	<hr />
+	<div class="row" ng-show="infos">
+		<div class="col-md-4">
+			<button class="btn btn-info" ng-click="afficherSuivi1RM ()">Afficher
+				suivi 1 RM</button>
+		</div>
+		<div class="col-md-offset-4 col-md-4">
+			<button class="btn btn-info" ng-click="afficherSuiviTPMA ()">Afficher
+				suivi TPMA</button>
+		</div>
+	</div>
+	<br />
+	<div class="row" ng-show="infos">
+		<form ng-submit="genererFiche ()">
+			<div class="col-md-4">
+				<input type="checkbox" id="1rm" ng-model="suivi_1rm" /><label
+					for="1rm">Générer suivi 1 RM</label> <input type="checkbox"
+					id="tpma" ng-model="suivi_tpma" /><label for="tpma">Générer
+					suivi TPMA</label>
+			</div>
+			<div class="col-md-offset-4 col-md-4">
+				<input type="submit" value="Générer fiche suivi"
+					class="btn btn-info" />
+			</div>
+		</form>
+	</div>
+	<br />
+	<div class="row" ng-show="envoiMail">
+		<form name="mailForm" ng-submit="envoyer ()">
+			<div class="col-md-4">
+				<input type="text" name="sujet" ng-model="sujet"
+					placeholder="Sujet du mail" class="form-control" required /> <span
+					class="erreur"
+					ng-show="mailForm.sujet.$dirty && mailForm.sujet.$error.required">Veuillez
+					saisir le sujet du mail !</span>
+			</div>
+			<div class="col-md-4">
+				<textarea name="contenu" ng-model="contenu"
+					placeholder="Contenu du mail (Remarques, Conseils, etc.)"
+					class="form-control" required></textarea>
+				<span class="erreur"
+					ng-show="mailForm.contenu.$dirty && mailForm.contenu.$error.required">Veuillez
+					saisir le contenu du mail !</span>
+			</div>
+			<div class="col-md-4">
+				<button type="submit" class="btn btn-success"
+					ng-disabled="mailForm.$invalid">
+					Envoyer <span class="glyphicon glyphicon-send"></span>
+				</button>
+			</div>
+		</form>
+	</div>
+	<hr />
+	<div ng-if="infos && suivi1RM" ng-include="'/templates/1rm.html'"></div>
+	<hr />
+	<div ng-if="infos && suiviTPMA" ng-include="'/templates/tpma.html'"></div>
+</div>

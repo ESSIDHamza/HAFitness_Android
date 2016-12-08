@@ -1,0 +1,29 @@
+<div ng-controller="tpmaCtrl">
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Palier</th>
+					<th>Vitesse (Km/h)</th>
+					<th>Durée</th>
+					<th>VO_2 max (ml/min)</th>
+					<th>FC</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="donneesTPMA in donneesTPMAs">
+					<td>{{donneesTPMA.palier}}</td>
+					<td>{{donneesTPMA.vitesse}}</td>
+					<td>{{donneesTPMA.duree}}</td>
+					<td>{{donneesTPMA.vo2}}</td>
+					<td><input type="number" min="0" ng-model="donneesTPMA.fc"
+						class="form-control" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center">
+		<button class="btn btn-success" ng-click="modifierTPMA ()">Modifier</button>
+	</div>
+</div>
+<hr />

@@ -1,0 +1,15 @@
+.lien {
+	color: red;
+	text-decoration: none;
+}
+
+.lien:hover {
+	color: green;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.erreur {
+	color: red;
+	font-weight: bold;
+}

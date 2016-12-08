@@ -1,0 +1,32 @@
+<div ng-controller="1rmCtrl">
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Ateliers</th>
+					<th>Barre (Kg)</th>
+					<th>Charge (Kg)</th>
+					<th>N° Répétition</th>
+					<th>1 RM (Kg)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="donnees1RM in donnees1RMs">
+					<td>{{donnees1RM.atelier}}</td>
+					<td><input type="number" min="0" step="0.1"
+						ng-model="donnees1RM.barre" class="form-control" /></td>
+					<td><input type="number" min="0" step="0.1"
+						ng-model="donnees1RM.charge" class="form-control" /></td>
+					<td><input type="number" min="0"
+						ng-model="donnees1RM.nbrRepetitions" class="form-control" /></td>
+					<td>{{(donnees1RM.barre+donnees1RM.charge)/((100-donnees1RM.nbrRepetitions*2)/100)
+						| number:2}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center">
+		<button class="btn btn-success" ng-click="modifier1RM ()">Modifier</button>
+	</div>
+	<hr />
+</div>

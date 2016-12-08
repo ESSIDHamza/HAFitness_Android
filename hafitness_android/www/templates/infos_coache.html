@@ -1,0 +1,171 @@
+<form name="modificationForm" ng-controller="modificationCtrl"
+	ng-submit="modifier ()">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<input type="text" placeholder="Nom" class="form-control"
+					ng-model="nom" name="nom" required /> <span class="erreur"
+					ng-show="modificationForm.nom.$dirty && modificationForm.nom.$error.required">Veuillez
+					saisir le nom !</span>
+			</div>
+		</div>
+		<div class="col-md-offset-4 col-md-4">
+			<div class="form-group">
+				<input type="text" placeholder="Prénom" class="form-control"
+					ng-model="prenom" name="prenom" required /> <span class="erreur"
+					ng-show="modificationForm.prenom.$dirty && modificationForm.prenom.$error.required">Veuillez
+					saisir le prénom !</span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<input type="number" min="0" placeholder="Âge (années)"
+					class="form-control" ng-model="age" name="age" required /> <span
+					class="erreur"
+					ng-show="modificationForm.age.$dirty && modificationForm.age.$error.number">Veuillez
+					saisir l'âge !</span>
+			</div>
+		</div>
+		<div class="col-md-offset-4 col-md-4">
+			<div class="form-group">
+				<input type="radio" id="homme" name="sexe" value="M" ng-model="sexe"
+					ng-required="!sexe"><label for="homme">Homme</label> <span
+					class="pull-right"><input type="radio" id="femme"
+					name="sexe" value="F" ng-model="sexe" ng-required="!sexe"><label
+					for="femme">Femme</label></span> <span class="erreur"
+					ng-show="modificationForm.sexe.$dirty && modificationForm.sexe.$error.required">Veuillez
+					saisir le sexe !</span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<input type="number" step="0.1" min="0" placeholder="Taille (cm)"
+					class="form-control" ng-model="taille" name="taille" required /> <span
+					class="erreur"
+					ng-show="modificationForm.taille.$dirty && modificationForm.taille.$error.number">Veuillez
+					saisir la taille !</span>
+			</div>
+		</div>
+		<div class="col-md-offset-4 col-md-4">
+			<div class="form-group">
+				<input type="number" step="0.1" min="0" placeholder="Poids (Kg)"
+					class="form-control" ng-model="poids" name="poids" required /> <span
+					class="erreur"
+					ng-show="modificationForm.poids.$dirty && modificationForm.poids.$error.number">Veuillez
+					saisir le poids !</span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<label for="niveau">Niveau : </label> <select id="niveau"
+					name="niveau" ng-model="niveau" required>
+					<option value="debutant">Débutant</option>
+					<option value="intermediaire">Intermédiaire</option>
+					<option value="expert">Expert</option>
+				</select>
+			</div>
+			<span class="erreur"
+				ng-show="modificationForm.niveau.$dirty && modificationForm.niveau.$error.required">Veuillez
+				saisir le niveau !</span>
+		</div>
+		<div class="col-md-offset-4 col-md-4">
+			<div class="input-group">
+				<span class="input-group-addon glyphicon glyphicon-thumbs-up"></span>
+				<input type="text" placeholder="Objectif" class="form-control"
+					ng-model="objectif" name="objectif" required /> <span
+					class="erreur"
+					ng-show="modificationForm.objectif.$dirty && modificationForm.objectif.$error.required">Veuillez
+					saisir l'objectif !</span>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-md-4">
+			<div class="input-group">
+				<span class="input-group-addon glyphicon glyphicon-calendar"></span>
+				<input type="number" min="0" max="7"
+					placeholder="Disponibilité (jours/semaine)" class="form-control"
+					ng-model="disponibilite" name="disponibilite" required /> <span
+					class="erreur"
+					ng-show="modificationForm.disponibilite.$dirty && modificationForm.disponibilite.$error.number">Veuillez
+					saisir la disponibilité !</span>
+			</div>
+		</div>
+		<div class="col-md-offset-4 col-md-4">
+			<div class="input-group">
+				<span class="input-group-addon glyphicon glyphicon-warning-sign"></span>
+				<input type="text" placeholder="Blessure(s)" class="form-control"
+					ng-model="blessure" name="blessure" required /> <span
+					class="erreur"
+					ng-show="modificationForm.blessure.$dirty && modificationForm.blessure.$error.required">Veuillez
+					saisir la/les blessure(s) !</span>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<label for="morphologie">Morphologie : </label> <select
+					id="morphologie" name="morphologie" ng-model="morphologie" required>
+					<option value="ectomorphe">Ectomorphe</option>
+					<option value="mesomorphe">Mésomorphe</option>
+					<option value="endomorphe">Endomorphe</option>
+				</select>
+			</div>
+			<span class="erreur"
+				ng-show="modificationForm.morphologie.$dirty && modificationForm.morphologie.$error.required">Veuillez
+				saisir la morphologie !</span>
+		</div>
+		<div class="col-md-offset-4 col-md-4">
+			<div class="input-group">
+				<span class="input-group-addon glyphicon glyphicon-envelope"></span>
+				<input type="email" placeholder="E-mail" class="form-control"
+					ng-model="mail" name="mail" required /> <span class="erreur"
+					ng-show="modificationForm.mail.$dirty && modificationForm.mail.$error.required">Veuillez
+					saisir l'e-mail !</span>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<div class="table-responsive">
+		<table class="table table-bordered">
+			<caption class="text-center" style="color: black; font-weight: bold">Mesures
+				anthropométriques :</caption>
+			<tbody>
+				<tr>
+					<td style="font-weight: bold">Tour du biceps (cm)</td>
+					<td style="font-weight: bold">Tour des pectoraux (cm)</td>
+					<td style="font-weight: bold">Tour de taille (cm)</td>
+					<td style="font-weight: bold">Tour de hanches (cm)</td>
+					<td style="font-weight: bold">Tour du mollet (cm)</td>
+				</tr>
+				<tr>
+					<td><input type="number" min="0" ng-model="tourBiceps"
+						class="form-control" /></td>
+					<td><input type="number" min="0" ng-model="tourPectoraux"
+						class="form-control" /></td>
+					<td><input type="number" min="0" ng-model="tourTaille"
+						class="form-control" /></td>
+					<td><input type="number" min="0" ng-model="tourHanches"
+						class="form-control" /></td>
+					<td><input type="number" min="0" ng-model="tourMollet"
+						class="form-control" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-4 col-md-4">
+			<input type="submit" value="Modifier" class="btn btn-success"
+				ng-disabled="modificationForm.$invalid" />
+		</div>
+	</div>
+</form>

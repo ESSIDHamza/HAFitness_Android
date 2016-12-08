@@ -1,0 +1,188 @@
+<div ng-controller="calculsCtrl">
+	<form name="calculsForm" ng-submit="calculer ()">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<input type="number" min="0" placeholder="Âge (années)"
+						class="form-control" ng-model="age" name="age" required /> <span
+						class="erreur"
+						ng-show="calculsForm.age.$dirty && calculsForm.age.$error.number">Veuillez
+						saisir l'âge !</span>
+				</div>
+			</div>
+			<div class="col-md-offset-4 col-md-4">
+				<div class="form-group">
+					<input type="radio" id="homme" name="sexe" value="M"
+						ng-model="sexe" ng-required="!sexe"><label for="homme">Homme</label>
+					<span class="pull-right"><input type="radio" id="femme"
+						name="sexe" value="F" ng-model="sexe" ng-required="!sexe"><label
+						for="femme">Femme</label></span> <span class="erreur"
+						ng-show="calculsForm.sexe.$dirty && calculsForm.sexe.$error.required">Veuillez
+						saisir le sexe !</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<input type="number" step="0.1" min="0" placeholder="Taille (cm)"
+						class="form-control" ng-model="taille" name="taille" required />
+					<span class="erreur"
+						ng-show="calculsForm.taille.$dirty && calculsForm.taille.$error.number">Veuillez
+						saisir la taille !</span>
+				</div>
+			</div>
+			<div class="col-md-offset-4 col-md-4">
+				<div class="form-group">
+					<input type="number" step="0.1" min="0" placeholder="Poids (Kg)"
+						class="form-control" ng-model="poids" name="poids" required /> <span
+						class="erreur"
+						ng-show="calculsForm.poids.$dirty && calculsForm.poids.$error.number">Veuillez
+						saisir le poids !</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-offset-4 col-md-4">
+				<div class="input-group">
+					<span class="input-group-addon glyphicon glyphicon-calendar"></span>
+					<input type="number" min="0" max="7"
+						placeholder="Disponibilité (jours/semaine)" class="form-control"
+						ng-model="disponibilite" name="disponibilite" required /> <span
+						class="erreur"
+						ng-show="calculsForm.disponibilite.$dirty && calculsForm.disponibilite.$error.number">Veuillez
+						saisir la disponibilité !</span>
+				</div>
+			</div>
+		</div>
+		<br />
+		<p class="text-center"
+			style="text-decoration: underline; font-weight: bold">Test
+			d'adaptation à l'effort :</p>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="input-group">
+					<span class="input-group-addon glyphicon glyphicon-heart"></span> <input
+						type="number" min="0" placeholder="Pouls 1 : FC repos (bpm)"
+						class="form-control" ng-model="pouls1" name="pouls1" required />
+					<span class="erreur"
+						ng-show="calculsForm.pouls1.$dirty && calculsForm.pouls1.$error.number">Veuillez
+						saisir le pouls 1 !</span>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="input-group">
+					<span class="input-group-addon glyphicon glyphicon-heart"></span> <input
+						type="number" min="0"
+						placeholder="Pouls 2 : FC après effort (bpm)" class="form-control"
+						ng-model="pouls2" name="pouls2" required /> <span class="erreur"
+						ng-show="calculsForm.pouls2.$dirty && calculsForm.pouls2.$error.number">Veuillez
+						saisir le pouls 2 !</span>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="input-group">
+					<span class="input-group-addon glyphicon glyphicon-heart"></span> <input
+						type="number" min="0"
+						placeholder="Pouls 3 : FC après récupération (bpm)"
+						class="form-control" ng-model="pouls3" name="pouls3" required />
+					<span class="erreur"
+						ng-show="calculsForm.pouls3.$dirty && calculsForm.pouls3.$error.number">Veuillez
+						saisir le pouls 3 !</span>
+				</div>
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-md-offset-4 col-md-3">
+				<input type="submit" value="Calculer" class="btn btn-success"
+					ng-disabled="calculsForm.$invalid" />
+			</div>
+			<div class="col-md-3">
+				<input type="reset" value="Tout effacer" class="btn btn-danger" />
+			</div>
+		</div>
+	</form>
+	<hr />
+	<div class="jumbotron" ng-show="calculs">
+		<h1 class="text-center animated pulse infinite" style="color: green">Résultats</h1>
+		<p>
+			Poids idéal : <span style="color: red">{{poidsIdeal|number:2}}
+				Kg</span>
+		</p>
+		<p>
+			BMI : <span style="color: red">{{BMI|number:2}}</span>
+		</p>
+		<p>
+			Interprétation du BMI : <span style="color: red">{{interpretationBMI}}</span>
+		</p>
+		<p>
+			MB : <span style="color: red">{{MB|number:2}} kcal</span>
+		</p>
+		<p>
+			MG : <span style="color: red">{{MG|number:2}} kcal</span>
+		</p>
+		<p>
+			Masse maigre : <span style="color: red">{{masseMaigre|number:2}}
+				{{Kg}}{{erreurConditionsFormuleMasseMaigre}}</span>
+		</p>
+		<p>
+			Masse hydrique : <span style="color: red">{{masseHydrique|number:2}}
+				Kg</span>
+		</p>
+		<p>
+			Fréquence cardiaque maximale : <span style="color: red">{{frequenceCardiaqueMax}}
+				bpm</span>
+		</p>
+		<p>
+			Indice de Ruffier : <span style="color: red">{{indiceRuffier|number:2}}</span>
+		</p>
+		<p>
+			Interprétation de l'indice de Ruffier : <span style="color: red">{{interpretationIndiceRuffier}}</span>
+		</p>
+		<p>
+			Indice de Dickson : <span style="color: red">{{indiceDickson|number:2}}</span>
+		</p>
+		<p>
+			Interprétation de l'indice de Dickson : <span style="color: red">{{interpretationIndiceDickson}}</span>
+		</p>
+		<hr />
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<caption class="text-center" style="color: black; font-weight: bold">Cardio
+					training :</caption>
+				<tbody>
+					<tr>
+						<td style="font-weight: bold">Effort (%)</td>
+						<td>30</td>
+						<td>40</td>
+						<td>50</td>
+						<td>60</td>
+						<td>70</td>
+						<td>80</td>
+						<td>90</td>
+						<td>100</td>
+					</tr>
+					<tr>
+						<td style="font-weight: bold">FC de l'effort (bpm)</td>
+						<td style="color: red">{{(frequenceCardiaqueMax-poulsRepos)*0.3+poulsRepos
+							| number:2}}</td>
+						<td style="color: red">{{(frequenceCardiaqueMax-poulsRepos)*0.4+poulsRepos
+							| number:2}}</td>
+						<td style="color: red">{{(frequenceCardiaqueMax-poulsRepos)*0.5+poulsRepos
+							| number:2}}</td>
+						<td style="color: red">{{(frequenceCardiaqueMax-poulsRepos)*0.6+poulsRepos
+							| number:2}}</td>
+						<td style="color: red">{{(frequenceCardiaqueMax-poulsRepos)*0.7+poulsRepos
+							| number:2}}</td>
+						<td style="color: red">{{(frequenceCardiaqueMax-poulsRepos)*0.8+poulsRepos
+							| number:2}}</td>
+						<td style="color: red">{{(frequenceCardiaqueMax-poulsRepos)*0.9+poulsRepos
+							| number:2}}</td>
+						<td style="color: red">{{frequenceCardiaqueMax}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

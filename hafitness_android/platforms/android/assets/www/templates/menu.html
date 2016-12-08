@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse" ng-controller="menuCtrl">
+	<div class="navbar-header">
+		<button class="navbar-toggle" data-toggle="collapse"
+			data-target="#mon-menu">
+			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+				class="icon-bar"></span>
+		</button>
+		<a href="#contacts" class="navbar-brand"
+			ng-click="setRubrique ('accueil')">HAFitness</a>
+	</div>
+	<div class="collapse navbar-collapse" id="mon-menu">
+		<ul class="nav navbar-nav navbar-right">
+			<li class="animated rollIn" ng-click="setRubrique ('accueil')"
+				ng-class="{active : rubrique=='accueil'}"><a href="#contacts">Accueil</a></li>
+			<li class="animated rollIn" ng-click="setRubrique ('inscription')"
+				ng-class="{active : rubrique=='inscription'}"><a
+				href="#inscription">Inscription</a></li>
+			<li class="animated rollIn" ng-click="setRubrique ('consulterInfos')"
+				ng-class="{active : rubrique=='consulterInfos'}"><a
+				href="#consulter-infos">Consulter les informations</a></li>
+			<li class="animated rollIn" ng-click="setRubrique ('listeCoaches')"
+				ng-class="{active : rubrique=='listeCoaches'}"><a href="#liste">Liste
+					des coaché(e)s</a></li>
+			<li class="animated rollIn" ng-click="setRubrique ('calculs')"
+				ng-class="{active : rubrique=='calculs'}"><a href="#calculs">Calculs
+					&amp; Interprétations</a></li>
+		</ul>
+	</div>
+</nav>
